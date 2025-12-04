@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects | Arturo Espana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-mark">AE</div>
+        <div>
+          <div>Arturo Espana</div>
+          <div style="font-size:0.75rem;color:#9ca3af;">Data Science · Economics</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="cv.html">CV</a>
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" class="external">GitHub</a>
+        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG" class="external">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <div class="section-header">
+        <h1 class="section-title">Projects</h1>
+        <p class="section-subtitle">
+          A selection of applied data science, econometrics, and analytics projects. 
+          More details and code are linked where available.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="healthcare">
+      <div class="section-header">
+        <h2 class="section-title">Health &amp; public policy</h2>
+        <p class="section-subtitle">Projects focused on healthcare access, health equity, and public programs.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>County-Level Risk Analysis of Healthcare Access and Racial Disparities in Preventable Hospitalizations</h3>
+          <div class="card-tagline">Random Forests · Negative Binomial regression · County Health Rankings</div>
+          <p>
+            Lead author on a race-stratified modeling study using County Health Rankings and related data to examine 
+            how primary care access, insurance coverage, and socioeconomic conditions relate to preventable hospital stays 
+            across U.S. counties.
+          </p>
+          <ul>
+            <li>Fitted Random Forest models to identify key predictors by racial composition of counties.</li>
+            <li>Estimated Negative Binomial regressions with population offsets to obtain interpretable incidence rate ratios.</li>
+            <li>Produced maps and effect plots to communicate results to non-technical health policy audiences.</li>
+          </ul>
+          <div class="card-links">
+            <!-- TODO: plug in actual GitHub/report links when ready -->
+            <!-- <a href="LINK_TO_CODE" class="link-pill">Code</a> -->
+            <!-- <a href="LINK_TO_REPORT" class="link-pill">Report</a> -->
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Modeling Preventable Hospital Stays at UnitedHealth Group</h3>
+          <div class="card-tagline">Industry data science internship · Risk modeling</div>
+          <p>
+            Built regression and tree-based models on data from 3,000+ U.S. counties to explore the relationship between 
+            healthcare access, demographics, and preventable hospitalizations in a payer context.
+          </p>
+          <ul>
+            <li>Cleaned and merged multiple large administrative and public datasets into analysis-ready tables.</li>
+            <li>Evaluated model performance and interpretability for use in internal risk analytics.</li>
+          </ul>
+          <div class="card-links">
+            <!-- internal project – usually no public code, so just leave blank or link to a sanitized summary later -->
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="energy">
+      <div class="section-header">
+        <h2 class="section-title">Energy &amp; environmental markets</h2>
+        <p class="section-subtitle">Data pipelines and analysis for energy and environmental policy questions.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>Ghana Petroleum Deregulation Analysis</h3>
+          <div class="card-tagline">Time-series · Price dispersion · Policy analytics</div>
+          <p>
+            Contributed to an environmental economics project studying Ghana’s downstream petroleum deregulation, 
+            focusing on how reforms affected retail fuel price dispersion and tax pass-through.
+          </p>
+          <ul>
+            <li>Developed R pipelines to ingest, clean, and validate large petroleum pricing datasets.</li>
+            <li>Constructed station-level and region-level summaries for use in policy memos and presentations.</li>
+          </ul>
+          <div class="card-links">
+            <!-- <a href="LINK_TO_CODE" class="link-pill">Code</a> -->
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Spatial Housing Market Modeling</h3>
+          <div class="card-tagline">Spatial econometrics · California Central Coast</div>
+          <p>
+            Built an end-to-end spatial ETL and modeling pipeline in R to join Census data, housing attributes, 
+            and geographic covariates in order to model neighborhood-level home values.
+          </p>
+          <ul>
+            <li>Used <code>sf</code>, <code>spdep</code>, and <code>spatialreg</code> to construct spatial weights and estimate spatial lag/error models.</li>
+            <li>Created diagnostic plots and maps to compare OLS to spatial regression approaches.</li>
+          </ul>
+          <div class="card-links">
+            <!-- <a href="LINK_TO_CODE" class="link-pill">Code</a> -->
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="analytics">
+      <div class="section-header">
+        <h2 class="section-title">Analytics &amp; dashboards</h2>
+        <p class="section-subtitle">Projects focused on pipelines, reporting, and decision support tools.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>Sports Performance Analytics &amp; Dashboards</h3>
+          <div class="card-tagline">Python · SQL · Power BI</div>
+          <p>
+            Built an end-to-end analytics pipeline to ingest, clean, and aggregate multi-season NBA play-by-play and 
+            box-score data into a structured dataset powering automated performance dashboards.
+          </p>
+          <ul>
+            <li>Implemented Python + SQL scripts to handle 100K+ rows of raw game data.</li>
+            <li>Developed Power BI dashboards highlighting lineup performance, game context effects, and trend breakdowns.</li>
+          </ul>
+          <div class="card-links">
+            <!-- <a href="LINK_TO_CODE" class="link-pill">Code</a> -->
+            <!-- <a href="LINK_TO_DASHBOARD" class="link-pill">Dashboard</a> -->
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="methods">
+      <div class="section-header">
+        <h2 class="section-title">Methods &amp; teaching-focused work</h2>
+        <p class="section-subtitle">Simulation and exploratory projects emphasizing statistical understanding.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>Chemical Correlates of Wine Quality</h3>
+          <div class="card-tagline">Regression modeling · Model diagnostics</div>
+          <p>
+            Course project technical report studying how acidity, residual sugar, and composition relate to red and white wine 
+            quality, with an emphasis on exploratory analysis and model diagnostics.
+          </p>
+          <ul>
+            <li>Compared linear and regularized regression models for predicting expert ratings.</li>
+            <li>Assessed assumptions and communicated limitations to a non-technical audience.</li>
+          </ul>
+          <div class="card-links">
+            <!-- <a href="LINK_TO_REPORT" class="link-pill">Report</a> -->
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Robustness of ANOVA vs. Permutation Tests</h3>
+          <div class="card-tagline">Simulation study · Non-parametric inference</div>
+          <p>
+            Simulation-based comparison of classical ANOVA and permutation tests under varying levels of normality and 
+            homoskedasticity violations, aimed at understanding when non-parametric approaches offer practical advantages.
+          </p>
+          <ul>
+            <li>Implemented simulation loops in R with reproducible code and clear visual summaries.</li>
+            <li>Produced a teaching-oriented technical report summarizing when each method is preferable.</li>
+          </ul>
+          <div class="card-links">
+            <!-- <a href="LINK_TO_REPORT" class="link-pill">Report</a> -->
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> · Arturo Espana</div>
+    <div class="footer-links">
+      <a href="mailto:arturoespana@ucsb.edu">Email</a>
+      <a href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
+      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

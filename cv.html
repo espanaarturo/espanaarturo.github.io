@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV | Arturo Espana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-mark">AE</div>
+        <div>
+          <div>Arturo Espana</div>
+          <div style="font-size:0.75rem;color:#9ca3af;">Data Science · Economics</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="cv.html" class="active">CV</a>
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" class="external">GitHub</a>
+        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG" class="external">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <div class="section-header">
+        <h1 class="section-title">Curriculum Vitae</h1>
+        <p class="section-subtitle">
+          A PDF version of my CV is available for download. For the most up-to-date experience and projects, 
+          you can also browse the Projects and Research pages.
+        </p>
+      </div>
+
+      <div class="cv-panel">
+        <h2>Download</h2>
+        <p>
+          Once you upload your CV file to this repository (for example at 
+          <code>assets/Arturo_Espana_CV.pdf</code>), update the link below so that it points to the correct path.
+        </p>
+        <div class="cv-buttons">
+          <!-- TODO: Update the href once your CV PDF is in the repo -->
+          <a href="assets/Arturo_Espana_CV.pdf" class="btn">Download CV (PDF)</a>
+          <a href="projects.html" class="btn btn-outline">View projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> · Arturo Espana</div>
+    <div class="footer-links">
+      <a href="mailto:arturoespana@ucsb.edu">Email</a>
+      <a href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
+      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

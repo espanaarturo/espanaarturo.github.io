@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Research &amp; Writing | Arturo Espana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-mark">AE</div>
+        <div>
+          <div>Arturo Espana</div>
+          <div style="font-size:0.75rem;color:#9ca3af;">Data Science · Economics</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html" class="active">Research</a>
+        <a href="cv.html">CV</a>
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" class="external">GitHub</a>
+        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG" class="external">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <div class="section-header">
+        <h1 class="section-title">Research &amp; writing</h1>
+        <p class="section-subtitle">
+          Technical reports, research projects, and talks. Some documents are teaching-oriented; others focus 
+          on applied health and policy questions.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="technical-reports">
+      <div class="section-header">
+        <h2 class="section-title">Technical reports</h2>
+        <p class="section-subtitle">Longer-form writing with methods, results, and interpretation.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3 class="timeline-title">
+            Chemical Correlates of Wine Quality: An Analysis of Acidity, Residual Sugar, and Composition in Red and White Wines
+          </h3>
+          <div class="timeline-meta">
+            Course project technical report, University of California, Santa Barbara · 2025
+          </div>
+          <p>
+            Explores how chemical properties relate to wine quality ratings using regression modeling, 
+            model diagnostics, and careful discussion of assumptions and limitations.
+          </p>
+          <!-- <p><a href="LINK_TO_PDF">Report (PDF)</a></p> -->
+        </div>
+
+        <div class="timeline-item">
+          <h3 class="timeline-title">
+            A Simulation Study Comparing the Robustness of ANOVA and Permutation Tests Under Assumption Violations
+          </h3>
+          <div class="timeline-meta">
+            Course project technical report, University of California, Santa Barbara · 2024
+          </div>
+          <p>
+            Compares Type I error and power for ANOVA and permutation tests across different distributions and 
+            variance structures, providing guidance on when non-parametric approaches are most useful.
+          </p>
+          <!-- <p><a href="LINK_TO_PDF">Report (PDF)</a></p> -->
+        </div>
+
+        <!-- You can add your county-level health report here once you’ve finalized a public version -->
+        <!--
+        <div class="timeline-item">
+          <h3 class="timeline-title">
+            County-Level Risk Analysis of Healthcare Access and Preventable Hospitalizations by Race
+          </h3>
+          <div class="timeline-meta">
+            Research report · 2025
+          </div>
+          <p>Short description...</p>
+          <p><a href="LINK_TO_PDF">Report (PDF)</a></p>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <section class="section" id="talks">
+      <div class="section-header">
+        <h2 class="section-title">Talks &amp; presentations</h2>
+        <p class="section-subtitle">
+          Selected presentations and invited talks. Full list appears on my CV.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3 class="timeline-title">
+            Changing Health Across Communities and Groups
+          </h3>
+          <div class="timeline-meta">
+            Healthy Communities Project Mini-Conference, Santa Barbara, CA · May 2025
+          </div>
+          <p>
+            Presented county-level analysis of changing health outcomes and disparities, 
+            focusing on how access and socioeconomic factors differ across communities.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3 class="timeline-title">
+            Finding Summer Research/Internship Opportunities
+          </h3>
+          <div class="timeline-meta">
+            Invited panelist, workshop led by Prof. Judith Canner (CSU Monterey Bay) · Nov 2025
+          </div>
+          <p>
+            Spoke about strategies for finding and applying to data-focused research experiences, 
+            with an emphasis on first-generation and underrepresented students.
+          </p>
+        </div>
+
+        <!-- Add more as needed, e.g., health equity posters or other conference talks -->
+      </div>
+    </section>
+
+    <section class="section" id="interests">
+      <div class="section-header">
+        <h2 class="section-title">Research interests</h2>
+        <p class="section-subtitle">
+          Areas I’m excited to keep working on in graduate school and beyond.
+        </p>
+      </div>
+
+      <div class="card">
+        <p>
+          Broadly, I’m interested in how data science and econometrics can inform:
+        </p>
+        <ul>
+          <li>Health equity and access to care, especially through large administrative and survey datasets.</li>
+          <li>Public policy evaluation using causal inference and quasi-experimental methods.</li>
+          <li>Spatial and temporal modeling of risk, including county-level and neighborhood-level analyses.</li>
+          <li>Transparent, interpretable machine learning models that can be used by policymakers and practitioners.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> · Arturo Espana</div>
+    <div class="footer-links">
+      <a href="mailto:arturoespana@ucsb.edu">Email</a>
+      <a href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
+      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
