@@ -2,178 +2,135 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Arturo Espana | Data Science & Economics</title>
+  <title>Arturo Espana | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arturo Espana — Statistics & Data Science and Economics at UC Santa Barbara. Portfolio of projects in health equity, policy, machine learning, and spatial analysis." />
   <link rel="stylesheet" href="assets/styles.css" />
-  <meta name="description" content="Portfolio of Arturo Espana, Statistics & Data Science and Economics at UC Santa Barbara. Data science, econometrics, health equity, and policy analytics." />
 </head>
 <body>
   <header class="site-header">
     <div class="nav-inner">
-      <div class="brand">
-        <div class="brand-mark">AE</div>
-        <div>
-          <div>Arturo Espana</div>
-          <div style="font-size:0.75rem;color:#9ca3af;">Data Science · Economics</div>
-        </div>
-      </div>
+      <a class="brand" href="index.html">
+        <span class="brand-mark">AE</span>
+        <span>
+          <div class="brand-text">Arturo Espana</div>
+          <div class="brand-sub">UCSB · Data Science & Economics</div>
+        </span>
+      </a>
       <nav class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="projects.html">Projects</a>
         <a href="research.html">Research</a>
         <a href="cv.html">CV</a>
-        <!-- TODO: update these with your real links -->
-        <a href="https://github.com/YOUR_GITHUB_USERNAME" class="external">GitHub</a>
-        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG" class="external">LinkedIn</a>
+        <!-- update these -->
+        <a href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
+        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG">LinkedIn</a>
       </nav>
     </div>
   </header>
 
   <main class="main">
-    <section class="hero">
-      <div class="hero-left">
-        <div class="hero-pill">
-          <div class="hero-dot"></div>
-          <span>Statistics & Data Science · Economics · UCSB</span>
-        </div>
-        <h1>Hi, I’m Arturo Espana.</h1>
-        <div class="hero-title-sub">
-          I build data pipelines and models for health, policy, and spatial data.
-        </div>
-        <p class="hero-text">
-          I’m a senior at the University of California, Santa Barbara, double majoring 
-          in Statistics &amp; Data Science and Economics (graduating June 2026). 
-          My work sits at the intersection of health equity, public policy, and machine learning, 
-          with a focus on interpretable and reproducible analysis.
-        </p>
+    <div class="home-wrap">
+      <!-- 1) Headshot -->
+      <!-- Add your image at: Arturo_Espana.jpg -->
+      Arturo_Espana.jpg<img
+        class="avatar"
+        src="assets/img/headshot.jpg"
+        alt="Arturo Espana headshot"
+        onerror="this.style.display='none'"
+      />
 
-        <ul class="hero-keypoints">
-          <li>Developed county-level models of preventable hospitalizations using Random Forests and Negative Binomial regression.</li>
-          <li>Built reproducible R pipelines for petroleum pricing and health datasets with 50K+ observations.</li>
-          <li>Experienced with R, Python, and SQL across research, internships, and course projects.</li>
-        </ul>
+      <!-- 2) Name -->
+      <h1 class="home-name">Arturo Espana</h1>
 
-        <div class="hero-actions">
-          <a href="projects.html" class="btn">View projects</a>
-          <a href="cv.html" class="btn btn-outline">View CV</a>
-        </div>
-      </div>
+      <!-- 3) Short identity tag -->
+      <span class="home-tag">
+        Statistics & Data Science · Economics · UC Santa Barbara
+      </span>
 
-      <aside class="hero-right-card">
-        <div class="hero-right-title">At a glance</div>
-        <h2>Research &amp; applied data science</h2>
+      <!-- 4) Bio card -->
+      <div class="home-bio">
         <p>
-          I’ve worked on projects connecting healthcare access to preventable hospital stays, 
-          analyzing energy markets in Ghana, and studying long-run changes in health and socioeconomic outcomes 
-          across U.S. counties.
+          I’m a senior at UC Santa Barbara double majoring in Statistics &amp; Data Science and Economics
+          (graduating June 2026). I build reproducible pipelines and interpretable models for health,
+          policy, and spatial data.
         </p>
-        <div class="hero-meta">
-          <div>
-            <div class="hero-meta-label">Education</div>
-            <div class="hero-meta-value">
-              B.S. Statistics &amp; Data Science<br />
-              B.A. Economics<br />
-              UC Santa Barbara
-            </div>
-          </div>
-          <div>
-            <div class="hero-meta-label">Methods &amp; tools</div>
-            <div class="hero-meta-value">
-              R, Python, SQL<br />
-              Regression, ML, causal inference<br />
-              Spatial analysis, visualization
-            </div>
-          </div>
-          <div>
-            <div class="hero-meta-label">Interests</div>
-            <div class="hero-meta-value">
-              Health equity<br />
-              Public policy &amp; economics<br />
-              Sports &amp; spatial analytics
-            </div>
-          </div>
-          <div>
-            <div class="hero-meta-label">Contact</div>
-            <div class="hero-meta-value">
-              <!-- You can replace this with a mailto: link -->
-              arturoespana@ucsb.edu
-            </div>
-          </div>
+        <p>
+          My recent work includes county-level modeling of preventable hospitalizations using Random Forests
+          and Negative Binomial regression, as well as data engineering and time-series analysis for Ghana’s
+          petroleum market research.
+        </p>
+        <p>
+          I’m especially interested in health equity, causal inference, and practical ML that can support
+          decision-making in public systems.
+        </p>
+      </div>
+
+      <div class="home-divider"></div>
+
+      <!-- 5) Contact / social buttons -->
+      <div class="home-actions">
+        <a class="btn btn-primary" href="mailto:arturoespana@ucsb.edu">Email</a>
+        <a class="btn" href="cv.html">CV</a>
+        <a class="btn" href="projects.html">Projects</a>
+
+        <!-- update these -->
+        <a class="btn" href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG">LinkedIn</a>
+
+        <!-- optional: add later if you want -->
+        <!-- <a class="btn" href="https://scholar.google.com/">Google Scholar</a> -->
+      </div>
+
+      <!-- 6) Optional: 3 small featured tiles (very fast credibility boost) -->
+      <div class="home-featured">
+        <div class="card">
+          <span class="pill">Featured</span>
+          <h3>Preventable Hospitalizations by Race</h3>
+          <p>
+            County-level health equity modeling with Random Forests and race-stratified Negative Binomial
+            regression using CHR&amp;R-style indicators.
+          </p>
+          <a href="projects.html#healthcare">View details →</a>
         </div>
-      </aside>
-    </section>
 
-    <section class="section">
-      <div class="section-header">
-        <h2 class="section-title">Selected areas of work</h2>
-        <p class="section-subtitle">More detail on the Projects and Research pages.</p>
+        <div class="card">
+          <span class="pill">Featured</span>
+          <h3>Ghana Petroleum Deregulation</h3>
+          <p>
+            R-based ETL and time-series analytics for large fuel pricing datasets supporting policy-facing
+            research outputs.
+          </p>
+          <a href="projects.html#energy">View details →</a>
+        </div>
+
+        <div class="card">
+          <span class="pill">Featured</span>
+          <h3>Statistical Simulation Reports</h3>
+          <p>
+            Teaching-oriented technical writing comparing ANOVA and permutation tests under assumption
+            violations.
+          </p>
+          <a href="research.html#technical-reports">Read reports →</a>
+        </div>
       </div>
-      <div class="card-grid">
-        <article class="card">
-          <h3>Healthcare access &amp; preventable hospitalizations</h3>
-          <div class="card-tagline">County-level modeling · Health equity</div>
-          <p>
-            Built county-level models connecting primary care access, insurance coverage, and 
-            socioeconomic factors to preventable hospital stays, using County Health Rankings data 
-            and BRFSS-derived indicators.
-          </p>
-          <ul>
-            <li>Random Forests for variable importance.</li>
-            <li>Race-stratified Negative Binomial models with population offsets.</li>
-            <li>Choropleth maps and effect plots for policy audiences.</li>
-          </ul>
-          <div class="card-links">
-            <a href="projects.html#healthcare" class="link-pill">See related projects</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Energy &amp; environmental policy</h3>
-          <div class="card-tagline">Petroleum markets · Price dispersion</div>
-          <p>
-            Supported an environmental economics project studying Ghana’s downstream petroleum 
-            deregulation, focusing on price dispersion, tax pass-through, and market structure.
-          </p>
-          <ul>
-            <li>R pipelines for ingesting and cleaning 50K+ record pricing datasets.</li>
-            <li>Time-series summaries for policy reports and memos.</li>
-          </ul>
-          <div class="card-links">
-            <a href="projects.html#energy" class="link-pill">See related projects</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Methodology &amp; simulation</h3>
-          <div class="card-tagline">Robustness studies · Teaching-focused work</div>
-          <p>
-            Designed simulation studies comparing ANOVA to permutation tests under assumption 
-            violations, and explored how model choice affects inference in realistic sample sizes.
-          </p>
-          <ul>
-            <li>Technical reports aimed at students and practitioners.</li>
-            <li>Emphasis on visualization and reproducible R code.</li>
-          </ul>
-          <div class="card-links">
-            <a href="research.html#technical-reports" class="link-pill">Read technical reports</a>
-          </div>
-        </article>
-      </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div>© <span id="year"></span> · Arturo Espana</div>
     <div class="footer-links">
       <a href="mailto:arturoespana@ucsb.edu">Email</a>
-      <a href="https://github.com/espanaarturo">GitHub</a>
-      <a href="https://www.linkedin.com/in/arturo-espana/">LinkedIn</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <!-- update these -->
+      <a href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
+      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_SLUG">LinkedIn</a>
     </div>
   </footer>
 
   <script>
-    // tiny helper to keep the year current
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
