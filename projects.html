@@ -4,7 +4,255 @@
   <meta charset="UTF-8" />
   <title>Arturo Espana | Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/css/site.css" />
+  <meta name="description" content="Projects by Arturo Espana — Statistics & Data Science and Economics at UC Santa Barbara." />
+
+  <style>
+    :root{
+      /* UCSB */
+      --ucsb-blue: #003660;
+      --ucsb-gold: #FDB515;
+
+      /* header */
+      --nav-bg: var(--ucsb-blue);
+      --nav-text: rgba(255,255,255,0.88);
+      --nav-active: #ffffff;
+
+      /* subtle UCSB accent */
+      --accent: #003660;
+      --accent-soft: rgba(0,54,96,0.08);
+
+      --text: #0f172a;
+      --muted: #5b6777;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+
+      --max-width: 1100px;
+      --radius: 10px;
+      --pill: 999px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ margin: 0; padding: 0; }
+    body{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    /* ===== CONSISTENT HEADER ===== */
+    .top-nav{
+      background: var(--nav-bg);
+      border-bottom: 3px solid var(--ucsb-gold);
+    }
+    .top-nav-inner{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+    .top-nav a{
+      color: var(--nav-text);
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding-bottom: 0.15rem;
+    }
+    .top-nav a:hover{ color: #ffffff; }
+    .top-nav a.active{
+      color: var(--nav-active);
+      border-bottom: 2px solid rgba(255,255,255,0.85);
+    }
+
+    /* ===== Lou-style layout ===== */
+    .page{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.4rem 1.4rem 3.2rem;
+    }
+
+    .layout{
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 0;
+      background: #fff;
+    }
+
+    .left{
+      padding: 0.2rem 2.2rem 0 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .right{
+      padding: 0.2rem 0 0 2.2rem;
+    }
+
+    /* ===== Left profile block ===== */
+    .profile-img{
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: #f3f4f6;
+      display: block;
+    }
+
+    .name{
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 1.2rem 0 0.9rem;
+      text-align: center;
+    }
+
+    .button-row{
+      display: flex;
+      justify-content: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.42rem 0.75rem;
+      border-radius: var(--pill);
+      border: 1px solid #cfd6df;
+      background: #fff;
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .pill-btn:hover{
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* ===== Right content ===== */
+    .section-title{
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-sub{
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin: 0 0 1.2rem;
+    }
+
+    /* ===== Projects preview cards (same vibe as Lou) ===== */
+    .project-grid{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-card{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.05rem;
+      background: #fff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .project-card:hover{
+      border-color: rgba(0,54,96,0.25);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+
+    .project-tag{
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ucsb-blue);
+      background: rgba(0,54,96,0.08);
+      border: 1px solid rgba(0,54,96,0.15);
+      padding: 0.12rem 0.5rem;
+      border-radius: var(--pill);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-title{
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+    }
+
+    .project-blurb{
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .project-card a{
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    /* ===== Project detail blocks ===== */
+    .project-section{
+      padding-top: 0.6rem;
+      margin-top: 1.6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-section h3{
+      margin: 0 0 0.4rem;
+      font-size: 1.25rem;
+    }
+
+    .project-meta{
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin: 0 0 0.6rem;
+    }
+
+    .project-placeholder{
+      background: #fafafa;
+      border: 1px dashed #d5dbe3;
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .layout{ grid-template-columns: 1fr; }
+      .left{
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .right{
+        padding-left: 0;
+        padding-top: 2rem;
+      }
+      .profile-img{
+        max-width: 280px;
+        margin: 0 auto;
+      }
+      .project-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -17,50 +265,113 @@
   </header>
 
   <main class="page">
-    <h1 class="projects-title">Projects</h1>
+    <div class="layout">
 
-    <div class="projects-grid">
-      <!-- Replace links + titles with real repos later -->
+      <!-- LEFT (same as Home) -->
+      <section class="left">
+        <img
+          class="profile-img"
+          src="assets/img/Arturo_Espana.jpeg"
+          alt="Arturo Espana headshot"
+          onerror="this.style.display='none'"
+        />
 
-      <article class="project-card">
-        <a class="project-link" href="https://github.com/espanaarturo/project-1" target="_blank" rel="noopener">
-          <img class="project-thumb" src="assets/img/project1.jpg" alt="Project 1 thumbnail"
-               onerror="this.style.display='none'">
-          <div class="project-body">
-            <span class="project-tag">Health Equity</span>
-            <div class="project-name">Project 1</div>
-            <p class="project-sub">Short placeholder summary of methods + impact.</p>
+        <div class="name">Arturo Espana</div>
+
+        <div class="button-row">
+          <a class="pill-btn" href="https://www.linkedin.com/in/arturo-espana/">LinkedIn</a>
+          <a class="pill-btn" href="https://github.com/espanaarturo">GitHub</a>
+          <a class="pill-btn" href="mailto:arturoespana@ucsb.edu">Email</a>
+          <a class="pill-btn" href="resume.html">Resume</a>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <section class="right">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">
+          A curated snapshot of my work across health equity, energy policy, and applied modeling.
+          I’ll add full write-ups and repository links as each project is finalized.
+        </p>
+
+        <!-- Preview cards (internal anchors for now) -->
+        <div class="project-grid">
+          <div class="project-card">
+            <a href="#project1">
+              <span class="project-tag">Health Equity</span>
+              <div class="project-title">Project 1 — Title Coming Soon</div>
+              <p class="project-blurb">
+                Placeholder summary for a county-level health modeling project.
+              </p>
+            </a>
           </div>
-          <div class="project-date">Dec 2025</div>
-        </a>
-      </article>
 
-      <article class="project-card">
-        <a class="project-link" href="https://github.com/espanaarturo/project-2" target="_blank" rel="noopener">
-          <img class="project-thumb" src="assets/img/project2.jpg" alt="Project 2 thumbnail"
-               onerror="this.style.display='none'">
-          <div class="project-body">
-            <span class="project-tag">Energy</span>
-            <div class="project-name">Project 2</div>
-            <p class="project-sub">Short placeholder summary of methods + impact.</p>
+          <div class="project-card">
+            <a href="#project2">
+              <span class="project-tag">Energy</span>
+              <div class="project-title">Project 2 — Title Coming Soon</div>
+              <p class="project-blurb">
+                Placeholder summary for Ghana fuel pricing + ETL + time-series analytics.
+              </p>
+            </a>
           </div>
-          <div class="project-date">Dec 2025</div>
-        </a>
-      </article>
 
-      <article class="project-card">
-        <a class="project-link" href="https://github.com/espanaarturo/project-3" target="_blank" rel="noopener">
-          <img class="project-thumb" src="assets/img/project3.jpg" alt="Project 3 thumbnail"
-               onerror="this.style.display='none'">
-          <div class="project-body">
-            <span class="project-tag">Policy</span>
-            <div class="project-name">Project 3</div>
-            <p class="project-sub">Short placeholder summary of methods + impact.</p>
+          <div class="project-card">
+            <a href="#project3">
+              <span class="project-tag">Policy / Methods</span>
+              <div class="project-title">Project 3 — Title Coming Soon</div>
+              <p class="project-blurb">
+                Placeholder summary for reproducible statistical or ML methods work.
+              </p>
+            </a>
           </div>
-          <div class="project-date">Jul 2025</div>
-        </a>
-      </article>
 
+          <div class="project-card">
+            <a href="#project4">
+              <span class="project-tag">Course / Applied</span>
+              <div class="project-title">Project 4 — Title Coming Soon</div>
+              <p class="project-blurb">
+                Placeholder summary for a polished course project you want to showcase.
+              </p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detail placeholders -->
+        <div id="project1" class="project-section">
+          <h3>Project 1 — Title Coming Soon</h3>
+          <p class="project-meta">Status: In progress</p>
+          <div class="project-placeholder">
+            Add 3-5 bullets worth of impact here later:
+            dataset, modeling approach, key results, and why it matters.
+          </div>
+        </div>
+
+        <div id="project2" class="project-section">
+          <h3>Project 2 — Title Coming Soon</h3>
+          <p class="project-meta">Status: In progress</p>
+          <div class="project-placeholder">
+            Add your pipeline notes + any early visuals you want to highlight.
+          </div>
+        </div>
+
+        <div id="project3" class="project-section">
+          <h3>Project 3 — Title Coming Soon</h3>
+          <p class="project-meta">Status: In progress</p>
+          <div class="project-placeholder">
+            This is a great spot for your strongest methods-heavy or writing-heavy project.
+          </div>
+        </div>
+
+        <div id="project4" class="project-section">
+          <h3>Project 4 — Title Coming Soon</h3>
+          <p class="project-meta">Status: In progress</p>
+          <div class="project-placeholder">
+            Optional slot for a course project that is clean, reproducible, and impressive.
+          </div>
+        </div>
+
+      </section>
     </div>
   </main>
 </body>
