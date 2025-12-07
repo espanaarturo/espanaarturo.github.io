@@ -2,13 +2,202 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Arturo Espana | Home</title>
+  <title>Arturo Espana | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Arturo Espana — Statistics & Data Science and Economics at UC Santa Barbara." />
-  <link rel="stylesheet" href="assets/css/site.css" />
+  <meta name="description" content="Arturo Espana — Statistics & Data Science and Economics at UC Santa Barbara. Portfolio of projects in health equity, policy, machine learning, and spatial analysis." />
+
+  <style>
+    :root{
+      /* UCSB */
+      --ucsb-blue: #003660;
+      --ucsb-gold: #FDB515;
+
+      /* header */
+      --nav-bg: var(--ucsb-blue);
+      --nav-text: rgba(255,255,255,0.88);
+      --nav-active: #ffffff;
+
+      /* subtle UCSB accent (kept minimal to match Lou's clean style) */
+      --accent: #003660;
+      --accent-soft: rgba(0,54,96,0.08);
+
+      --text: #0f172a;
+      --muted: #5b6777;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+
+      --max-width: 1100px;
+      --radius: 10px;
+      --pill: 999px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ margin: 0; padding: 0; }
+    body{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    /* ===== CONSISTENT HEADER (copy to other pages) ===== */
+    .top-nav{
+      background: var(--nav-bg);
+      border-bottom: 3px solid var(--ucsb-gold);
+    }
+    .top-nav-inner{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+    .top-nav a{
+      color: var(--nav-text);
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding-bottom: 0.15rem;
+    }
+    .top-nav a:hover{ color: #ffffff; }
+    .top-nav a.active{
+      color: var(--nav-active);
+      border-bottom: 2px solid rgba(255,255,255,0.85);
+    }
+
+    /* ===== Main page layout (Lou-style) ===== */
+    .page{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.4rem 1.4rem 3.2rem;
+    }
+
+    .layout{
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 0;
+      background: #fff;
+    }
+
+    /* Left column with vertical divider */
+    .left{
+      padding: 0.2rem 2.2rem 0 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .right{
+      padding: 0.2rem 0 0 2.2rem;
+    }
+
+    /* ===== Left profile block ===== */
+    .profile-img{
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: #f3f4f6;
+      display: block;
+    }
+
+    .name{
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 1.2rem 0 0.9rem;
+      text-align: center;
+    }
+
+    .button-row{
+      display: flex;
+      justify-content: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.42rem 0.75rem;
+      border-radius: var(--pill);
+      border: 1px solid #cfd6df;
+      background: #fff;
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .pill-btn:hover{
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* ===== Right content ===== */
+    .bio p{
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .bio a{ color: var(--accent); }
+
+    .section-title{
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 2rem 0 0.9rem;
+      letter-spacing: -0.01em;
+    }
+
+    .edu-entry, .exp-entry{
+      margin-bottom: 1.25rem;
+    }
+
+    .edu-school{
+      font-weight: 700;
+    }
+
+    .edu-line, .exp-line{
+      color: var(--muted);
+      margin-top: 0.15rem;
+      font-size: 1rem;
+    }
+
+    .exp-role{
+      font-weight: 700;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .layout{
+        grid-template-columns: 1fr;
+      }
+      .left{
+        border-right: none;
+        padding-right: 0;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .right{
+        padding-left: 0;
+        padding-top: 2rem;
+      }
+      .profile-img{
+        max-width: 280px;
+        margin: 0 auto;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- CONSISTENT UCSB HEADER -->
   <header class="top-nav">
     <div class="top-nav-inner">
       <a class="active" href="index.html">Home</a>
@@ -19,6 +208,8 @@
 
   <main class="page">
     <div class="layout">
+
+      <!-- LEFT column -->
       <section class="left">
         <img
           class="profile-img"
@@ -33,10 +224,13 @@
           <a class="pill-btn" href="https://www.linkedin.com/in/arturo-espana/">LinkedIn</a>
           <a class="pill-btn" href="https://github.com/espanaarturo">GitHub</a>
           <a class="pill-btn" href="mailto:arturoespana@ucsb.edu">Email</a>
+          <a class="pill-btn" href="resume.html">Resume</a>
         </div>
       </section>
 
+      <!-- RIGHT column -->
       <section class="right">
+
         <div class="bio">
           <p>
             Hello, and welcome to my website! I’m Arturo Espana, a senior at UC Santa Barbara,
@@ -69,24 +263,29 @@
           <div class="exp-role">Research Assistant - Environmental Markets Lab</div>
           <div class="exp-line">Sept 2025 - Present</div>
         </div>
+
         <div class="exp-entry">
           <div class="exp-role">Research Fellow - Healthy Communities Project</div>
           <div class="exp-line">June 2025 - Sept 2025</div>
         </div>
+
         <div class="exp-entry">
           <div class="exp-role">
             UnitedHealth Group Bridges to Healthcare Technology at Carnegie Mellon University
           </div>
           <div class="exp-line">May 2025 - Aug 2025</div>
         </div>
+
         <div class="exp-entry">
           <div class="exp-role">Health Equity Intern - UCSB Department of Economics</div>
           <div class="exp-line">Jan 2025 - May 2025</div>
         </div>
+
         <div class="exp-entry">
           <div class="exp-role">Research Assistant - Data-Driven Analysis of Peace Project Lab</div>
           <div class="exp-line">Jan 2025 - April 2025</div>
         </div>
+
       </section>
     </div>
   </main>
