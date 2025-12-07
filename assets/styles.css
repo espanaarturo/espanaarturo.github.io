@@ -64,7 +64,7 @@ body{
   padding: 2.4rem 1.4rem 3.2rem;
 }
 
-/* ===== Lou-style two-column layout (Home/Research if you want) ===== */
+/* =====  */
 .layout{
   display: grid;
   grid-template-columns: 360px 1fr;
