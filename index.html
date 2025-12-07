@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Arturo Espana | Portfolio</title>
+  <title>The AE | Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Arturo Espana — Statistics & Data Science and Economics at UC Santa Barbara. Portfolio of projects in health equity, policy, machine learning, and spatial analysis." />
 
   <style>
     :root{
-      /* subtle UCSB accent (kept minimal to match Lou's clean style) */
       --accent: #003660;     /* UCSB blue */
       --accent-soft: rgba(0,54,96,0.08);
       --text: #0f172a;
@@ -30,11 +29,55 @@
       line-height: 1.55;
     }
 
+    /* ===== Top Tabs ===== */
+    .topbar{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.4rem 1.4rem 0.2rem;
+    }
+    .site-title{
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.8rem;
+    }
+    .tabs{
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.9rem;
+    }
+    .tab{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--pill);
+      border: 1px solid #cfd6df;
+      background: #fff;
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+    .tab:hover{
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .tab.active{
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
     /* ===== Main page layout (Lou-style) ===== */
     .page{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 2.4rem 1.4rem 3.2rem;
+      padding: 1.6rem 1.4rem 3.2rem; /* reduced top since tabs above */
     }
 
     .layout{
@@ -109,8 +152,6 @@
       font-size: 1.02rem;
     }
 
-    .bio a{ color: var(--accent); }
-
     .section-title{
       font-size: 1.8rem;
       font-weight: 700;
@@ -155,15 +196,28 @@
         max-width: 280px;
         margin: 0 auto;
       }
+      .tabs{
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- TOP TABS -->
+  <header class="topbar">
+    <div class="site-title">The AE</div>
+    <nav class="tabs">
+      <a class="tab active" href="index.html">Home</a>
+      <a class="tab" href="projects.html">Projects</a>
+      <a class="tab" href="cv.html">CV</a>
+    </nav>
+  </header>
+
   <main class="page">
     <div class="layout">
 
-      <!-- LEFT column (Lou-style profile block) -->
+      <!-- LEFT column -->
       <section class="left">
         <img
           class="profile-img"
@@ -182,7 +236,7 @@
         </div>
       </section>
 
-      <!-- RIGHT column (Bio + Education + Experience) -->
+      <!-- RIGHT column -->
       <section class="right">
 
         <div class="bio">
