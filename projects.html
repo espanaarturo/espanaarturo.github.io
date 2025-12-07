@@ -90,23 +90,12 @@
       padding: 0.2rem 0 0 2.2rem;
     }
 
-    /* ===== Left profile block ===== */
-    .profile-img{
-      width: 100%;
-      max-width: 320px;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: #f3f4f6;
-      display: block;
-    }
-
+    /* ===== Left profile block (NO photo) ===== */
     .name{
       font-size: 2.1rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin: 1.2rem 0 0.9rem;
+      margin: 0.2rem 0 0.9rem;
       text-align: center;
     }
 
@@ -142,7 +131,7 @@
     .section-title{
       font-size: 1.8rem;
       font-weight: 700;
-      margin: 0 0 1rem;
+      margin: 0 0 0.6rem;
       letter-spacing: -0.01em;
     }
 
@@ -152,12 +141,11 @@
       margin: 0 0 1.2rem;
     }
 
-    /* ===== Projects preview cards (same vibe as Lou) ===== */
+    /* ===== Projects cards (single list only) ===== */
     .project-grid{
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
-      margin-bottom: 2rem;
     }
 
     .project-card{
@@ -204,33 +192,6 @@
       display: block;
     }
 
-    /* ===== Project detail blocks ===== */
-    .project-section{
-      padding-top: 0.6rem;
-      margin-top: 1.6rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .project-section h3{
-      margin: 0 0 0.4rem;
-      font-size: 1.25rem;
-    }
-
-    .project-meta{
-      color: var(--muted);
-      font-size: 0.98rem;
-      margin: 0 0 0.6rem;
-    }
-
-    .project-placeholder{
-      background: #fafafa;
-      border: 1px dashed #d5dbe3;
-      border-radius: var(--radius);
-      padding: 0.9rem 1rem;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
     /* ===== Responsive ===== */
     @media (max-width: 980px){
       .layout{ grid-template-columns: 1fr; }
@@ -243,10 +204,6 @@
       .right{
         padding-left: 0;
         padding-top: 2rem;
-      }
-      .profile-img{
-        max-width: 280px;
-        margin: 0 auto;
       }
       .project-grid{
         grid-template-columns: 1fr;
@@ -267,15 +224,8 @@
   <main class="page">
     <div class="layout">
 
-      <!-- LEFT (same as Home) -->
+      <!-- LEFT (no photo) -->
       <section class="left">
-        <img
-          class="profile-img"
-          src="assets/img/Arturo_Espana.jpeg"
-          alt="Arturo Espana headshot"
-          onerror="this.style.display='none'"
-        />
-
         <div class="name">Arturo Espana</div>
 
         <div class="button-row">
@@ -290,14 +240,14 @@
       <section class="right">
         <h2 class="section-title">Projects</h2>
         <p class="section-sub">
-          A curated snapshot of my work across health equity, energy policy, and applied modeling.
-          I’ll add full write-ups and repository links as each project is finalized.
+          A curated set of my research, course, and personal data science projects.
         </p>
 
-        <!-- Preview cards (internal anchors for now) -->
         <div class="project-grid">
+          <!-- Replace href with repo links later -->
+
           <div class="project-card">
-            <a href="#project1">
+            <a href="#">
               <span class="project-tag">Health Equity</span>
               <div class="project-title">Project 1 — Title Coming Soon</div>
               <p class="project-blurb">
@@ -307,7 +257,7 @@
           </div>
 
           <div class="project-card">
-            <a href="#project2">
+            <a href="#">
               <span class="project-tag">Energy</span>
               <div class="project-title">Project 2 — Title Coming Soon</div>
               <p class="project-blurb">
@@ -317,7 +267,7 @@
           </div>
 
           <div class="project-card">
-            <a href="#project3">
+            <a href="#">
               <span class="project-tag">Policy / Methods</span>
               <div class="project-title">Project 3 — Title Coming Soon</div>
               <p class="project-blurb">
@@ -327,47 +277,13 @@
           </div>
 
           <div class="project-card">
-            <a href="#project4">
+            <a href="#">
               <span class="project-tag">Course / Applied</span>
               <div class="project-title">Project 4 — Title Coming Soon</div>
               <p class="project-blurb">
                 Placeholder summary for a polished course project you want to showcase.
               </p>
             </a>
-          </div>
-        </div>
-
-        <!-- Detail placeholders -->
-        <div id="project1" class="project-section">
-          <h3>Project 1 — Title Coming Soon</h3>
-          <p class="project-meta">Status: In progress</p>
-          <div class="project-placeholder">
-            Add 3-5 bullets worth of impact here later:
-            dataset, modeling approach, key results, and why it matters.
-          </div>
-        </div>
-
-        <div id="project2" class="project-section">
-          <h3>Project 2 — Title Coming Soon</h3>
-          <p class="project-meta">Status: In progress</p>
-          <div class="project-placeholder">
-            Add your pipeline notes + any early visuals you want to highlight.
-          </div>
-        </div>
-
-        <div id="project3" class="project-section">
-          <h3>Project 3 — Title Coming Soon</h3>
-          <p class="project-meta">Status: In progress</p>
-          <div class="project-placeholder">
-            This is a great spot for your strongest methods-heavy or writing-heavy project.
-          </div>
-        </div>
-
-        <div id="project4" class="project-section">
-          <h3>Project 4 — Title Coming Soon</h3>
-          <p class="project-meta">Status: In progress</p>
-          <div class="project-placeholder">
-            Optional slot for a course project that is clean, reproducible, and impressive.
           </div>
         </div>
 

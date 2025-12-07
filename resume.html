@@ -90,23 +90,12 @@
       padding: 0.2rem 0 0 2.2rem;
     }
 
-    /* ===== Left profile block ===== */
-    .profile-img{
-      width: 100%;
-      max-width: 320px;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: #f3f4f6;
-      display: block;
-    }
-
+    /* ===== Left block (NO photo) ===== */
     .name{
       font-size: 2.1rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin: 1.2rem 0 0.9rem;
+      margin: 0.2rem 0 0.9rem;
       text-align: center;
     }
 
@@ -171,33 +160,6 @@
       font-size: 0.98rem;
     }
 
-    .resume-actions{
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-top: 0.9rem;
-    }
-
-    .action-btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 0.85rem;
-      border-radius: var(--pill);
-      border: 1px solid #cfd6df;
-      background: #fff;
-      color: #1f2937;
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 650;
-      transition: all 0.15s ease;
-    }
-    .action-btn:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-
     /* ===== Responsive ===== */
     @media (max-width: 980px){
       .layout{ grid-template-columns: 1fr; }
@@ -210,10 +172,6 @@
       .right{
         padding-left: 0;
         padding-top: 2rem;
-      }
-      .profile-img{
-        max-width: 280px;
-        margin: 0 auto;
       }
     }
   </style>
@@ -231,15 +189,8 @@
   <main class="page">
     <div class="layout">
 
-      <!-- LEFT (same as Home) -->
+      <!-- LEFT (no photo) -->
       <section class="left">
-        <img
-          class="profile-img"
-          src="assets/img/Arturo_Espana.jpeg"
-          alt="Arturo Espana headshot"
-          onerror="this.style.display='none'"
-        />
-
         <div class="name">Arturo Espana</div>
 
         <div class="button-row">
@@ -260,20 +211,6 @@
           <p class="resume-note">
             When you’re ready, add your file to:
             <br><code>assets/Arturo_Espana_Resume_Dec_2025.pdf</code>
-          </p>
-
-          <div class="resume-actions">
-            <!-- Uncomment when PDF exists -->
-            <!-- <a class="action-btn" href="assets/Arturo_Espana_Resume_Dec_2025.pdf">Open PDF</a> -->
-            <span class="action-btn" aria-disabled="true">PDF link coming soon</span>
-          </div>
-        </div>
-
-        <div class="resume-box">
-          <strong>Quick snapshot (optional)</strong>
-          <p class="resume-note">
-            If you want, we can add a short on-page summary of skills, tools,
-            and 3 highlight bullets matching your grad-school positioning.
           </p>
         </div>
 
