@@ -17,7 +17,7 @@
       --nav-text: rgba(255,255,255,0.88);
       --nav-active: #ffffff;
 
-      /* subtle UCSB accent */
+      /* accents */
       --accent: #003660;
       --accent-soft: rgba(0,54,96,0.08);
 
@@ -29,6 +29,7 @@
       --max-width: 1100px;
       --radius: 10px;
       --pill: 999px;
+      --content-width: 860px;
     }
 
     *{ box-sizing: border-box; }
@@ -67,78 +68,30 @@
       border-bottom: 2px solid rgba(255,255,255,0.85);
     }
 
-    /* ===== Lou-style layout ===== */
+    /* ===== Centered page focus ===== */
     .page{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 2.4rem 1.4rem 3.2rem;
+      padding: 2.8rem 1.4rem 3.2rem;
     }
 
-    .layout{
-      display: grid;
-      grid-template-columns: 360px 1fr;
-      gap: 0;
-      background: #fff;
-    }
-
-    .left{
-      padding: 0.2rem 2.2rem 0 0;
-      border-right: 1px solid var(--border);
-    }
-
-    .right{
-      padding: 0.2rem 0 0 2.2rem;
-    }
-
-    /* ===== Left profile block (NO photo) ===== */
-    .name{
-      font-size: 2.1rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 0.2rem 0 0.9rem;
+    .focus{
+      max-width: var(--content-width);
+      margin: 0 auto;
       text-align: center;
     }
 
-    .button-row{
-      display: flex;
-      justify-content: center;
-      gap: 0.55rem;
-      flex-wrap: wrap;
-    }
-
-    .pill-btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.42rem 0.75rem;
-      border-radius: var(--pill);
-      border: 1px solid #cfd6df;
-      background: #fff;
-      color: #1f2937;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: all 0.15s ease;
-    }
-
-    .pill-btn:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-
-    /* ===== Right content ===== */
     .section-title{
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: 2rem;
+      font-weight: 750;
       margin: 0 0 0.6rem;
       letter-spacing: -0.01em;
     }
 
     .section-sub{
       color: var(--muted);
-      font-size: 1.02rem;
-      margin: 0 0 1.2rem;
+      font-size: 1.05rem;
+      margin: 0 0 1.6rem;
     }
 
     /* ===== Projects cards (single list only) ===== */
@@ -146,6 +99,7 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
+      text-align: left; /* keeps the cards readable */
     }
 
     .project-card{
@@ -193,21 +147,8 @@
     }
 
     /* ===== Responsive ===== */
-    @media (max-width: 980px){
-      .layout{ grid-template-columns: 1fr; }
-      .left{
-        border-right: none;
-        padding-right: 0;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid var(--border);
-      }
-      .right{
-        padding-left: 0;
-        padding-top: 2rem;
-      }
-      .project-grid{
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 900px){
+      .project-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -222,73 +163,56 @@
   </header>
 
   <main class="page">
-    <div class="layout">
+    <section class="focus">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">
+        A curated set of my research, course, and personal data science projects.
+      </p>
 
-      <!-- LEFT (no photo) -->
-      <section class="left">
-        <div class="name">Arturo Espana</div>
+      <div class="project-grid">
+        <!-- Replace # with repo links later -->
 
-        <div class="button-row">
-          <a class="pill-btn" href="https://www.linkedin.com/in/arturo-espana/">LinkedIn</a>
-          <a class="pill-btn" href="https://github.com/espanaarturo">GitHub</a>
-          <a class="pill-btn" href="mailto:arturoespana@ucsb.edu">Email</a>
-          <a class="pill-btn" href="resume.html">Resume</a>
-        </div>
-      </section>
-
-      <!-- RIGHT -->
-      <section class="right">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-sub">
-          A curated set of my research, course, and personal data science projects.
-        </p>
-
-        <div class="project-grid">
-          <!-- Replace href with repo links later -->
-
-          <div class="project-card">
-            <a href="#">
-              <span class="project-tag">Health Equity</span>
-              <div class="project-title">Project 1 — Title Coming Soon</div>
-              <p class="project-blurb">
-                Placeholder summary for a county-level health modeling project.
-              </p>
-            </a>
-          </div>
-
-          <div class="project-card">
-            <a href="#">
-              <span class="project-tag">Energy</span>
-              <div class="project-title">Project 2 — Title Coming Soon</div>
-              <p class="project-blurb">
-                Placeholder summary for Ghana fuel pricing + ETL + time-series analytics.
-              </p>
-            </a>
-          </div>
-
-          <div class="project-card">
-            <a href="#">
-              <span class="project-tag">Policy / Methods</span>
-              <div class="project-title">Project 3 — Title Coming Soon</div>
-              <p class="project-blurb">
-                Placeholder summary for reproducible statistical or ML methods work.
-              </p>
-            </a>
-          </div>
-
-          <div class="project-card">
-            <a href="#">
-              <span class="project-tag">Course / Applied</span>
-              <div class="project-title">Project 4 — Title Coming Soon</div>
-              <p class="project-blurb">
-                Placeholder summary for a polished course project you want to showcase.
-              </p>
-            </a>
-          </div>
+        <div class="project-card">
+          <a href="#">
+            <span class="project-tag">Health Equity</span>
+            <div class="project-title">Project 1 — Title Coming Soon</div>
+            <p class="project-blurb">
+              Placeholder summary for a county-level health modeling project.
+            </p>
+          </a>
         </div>
 
-      </section>
-    </div>
+        <div class="project-card">
+          <a href="#">
+            <span class="project-tag">Energy</span>
+            <div class="project-title">Project 2 — Title Coming Soon</div>
+            <p class="project-blurb">
+              Placeholder summary for Ghana fuel pricing + ETL + time-series analytics.
+            </p>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <a href="#">
+            <span class="project-tag">Policy / Methods</span>
+            <div class="project-title">Project 3 — Title Coming Soon</div>
+            <p class="project-blurb">
+              Placeholder summary for reproducible statistical or ML methods work.
+            </p>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <a href="#">
+            <span class="project-tag">Course / Applied</span>
+            <div class="project-title">Project 4 — Title Coming Soon</div>
+            <p class="project-blurb">
+              Placeholder summary for a polished course project you want to showcase.
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 </body>
 </html>
