@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The AE | Home</title>
+  <title>Arturo Espana | Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Arturo Espana — Statistics & Data Science and Economics at UC Santa Barbara. Portfolio of projects in health equity, policy, machine learning, and spatial analysis." />
 
   <style>
     :root{
-      --accent: #003660;     /* UCSB blue */
-      --accent-soft: rgba(0,54,96,0.08);
+      /* Header color (matches your screenshot vibe). Change if you want. */
+      --header-bg: #8b1e3f;
+      --header-text: #ffffff;
+
       --text: #0f172a;
       --muted: #5b6777;
       --border: #e5e7eb;
@@ -17,7 +19,6 @@
 
       --max-width: 1100px;
       --radius: 10px;
-      --pill: 999px;
     }
 
     *{ box-sizing: border-box; }
@@ -29,55 +30,40 @@
       line-height: 1.55;
     }
 
-    /* ===== Top Tabs ===== */
-    .topbar{
+    /* ===== TOP HEADER TABS ===== */
+    .site-header{
+      background: var(--header-bg);
+    }
+    .header-inner{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.4rem 1.4rem 0.2rem;
-    }
-    .site-title{
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin: 0 0 0.8rem;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem;
     }
     .tabs{
       display: flex;
-      gap: 0.6rem;
+      gap: 2.2rem;
       flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.9rem;
     }
     .tab{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.45rem 0.9rem;
-      border-radius: var(--pill);
-      border: 1px solid #cfd6df;
-      background: #fff;
-      color: #1f2937;
+      color: var(--header-text);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.15s ease;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      opacity: 0.95;
     }
-    .tab:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-    .tab.active{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
+    .tab:hover{ opacity: 1; text-decoration: underline; }
+    .tab.active{ opacity: 1; text-decoration: none; }
 
     /* ===== Main page layout (Lou-style) ===== */
     .page{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.6rem 1.4rem 3.2rem; /* reduced top since tabs above */
+      padding: 2.4rem 1.4rem 3.2rem;
     }
 
     .layout{
@@ -129,7 +115,7 @@
       align-items: center;
       justify-content: center;
       padding: 0.42rem 0.75rem;
-      border-radius: var(--pill);
+      border-radius: 999px;
       border: 1px solid #cfd6df;
       background: #fff;
       color: #1f2937;
@@ -140,9 +126,8 @@
     }
 
     .pill-btn:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
+      border-color: #111827;
+      background: #f8fafc;
     }
 
     /* ===== Right content ===== */
@@ -196,22 +181,23 @@
         max-width: 280px;
         margin: 0 auto;
       }
-      .tabs{
-        justify-content: flex-start;
+      .tab{
+        font-size: 1.35rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- TOP TABS -->
-  <header class="topbar">
-    <div class="site-title">The AE</div>
-    <nav class="tabs">
-      <a class="tab active" href="index.html">Home</a>
-      <a class="tab" href="projects.html">Projects</a>
-      <a class="tab" href="cv.html">CV</a>
-    </nav>
+  <!-- HEADER TABS -->
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="tabs">
+        <a class="tab active" href="index.html">Home</a>
+        <a class="tab" href="projects.html">Projects</a>
+        <a class="tab" href="cv.html">Resume</a>
+      </nav>
+    </div>
   </header>
 
   <main class="page">
@@ -232,7 +218,6 @@
           <a class="pill-btn" href="https://www.linkedin.com/in/arturo-espana/">LinkedIn</a>
           <a class="pill-btn" href="https://github.com/espanaarturo">GitHub</a>
           <a class="pill-btn" href="mailto:arturoespana@ucsb.edu">Email</a>
-          <a class="pill-btn" href="cv.html">CV</a>
         </div>
       </section>
 

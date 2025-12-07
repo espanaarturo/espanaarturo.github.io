@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The AE | CV</title>
+  <title>Arturo Espana | Resume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     :root{
-      --accent: #003660;
-      --accent-soft: rgba(0,54,96,0.08);
+      --header-bg: #8b1e3f;
+      --header-text: #ffffff;
+
       --text: #0f172a;
       --muted: #5b6777;
       --border: #e5e7eb;
@@ -16,7 +17,6 @@
 
       --max-width: 1100px;
       --radius: 10px;
-      --pill: 999px;
     }
 
     *{ box-sizing: border-box; }
@@ -28,60 +28,43 @@
       line-height: 1.55;
     }
 
-    .topbar{
+    /* HEADER TABS */
+    .site-header{ background: var(--header-bg); }
+    .header-inner{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.4rem 1.4rem 0.2rem;
-    }
-    .site-title{
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin: 0 0 0.8rem;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem;
     }
     .tabs{
       display: flex;
-      gap: 0.6rem;
+      gap: 2.2rem;
       flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.9rem;
     }
     .tab{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.45rem 0.9rem;
-      border-radius: var(--pill);
-      border: 1px solid #cfd6df;
-      background: #fff;
-      color: #1f2937;
+      color: var(--header-text);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.15s ease;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      opacity: 0.95;
     }
-    .tab:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-    .tab.active{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
+    .tab:hover{ opacity: 1; text-decoration: underline; }
+    .tab.active{ opacity: 1; text-decoration: none; }
 
     .page{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.6rem 1.4rem 3.2rem;
+      padding: 2.4rem 1.4rem 3.2rem;
     }
 
     .layout{
       display: grid;
       grid-template-columns: 360px 1fr;
       gap: 0;
-      background: #fff;
     }
 
     .left{
@@ -120,7 +103,7 @@
       align-items: center;
       justify-content: center;
       padding: 0.42rem 0.75rem;
-      border-radius: var(--pill);
+      border-radius: 999px;
       border: 1px solid #cfd6df;
       background: #fff;
       color: #1f2937;
@@ -130,48 +113,26 @@
       transition: all 0.15s ease;
     }
     .pill-btn:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
+      border-color: #111827;
+      background: #f8fafc;
     }
 
     .section-title{
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 700;
-      margin: 0 0 1rem;
+      margin: 0 0 0.8rem;
+    }
+    .resume-note{
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
     }
 
-    .cv-actions{
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .cv-btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.45rem 0.9rem;
-      border-radius: var(--pill);
-      border: 1px solid #cfd6df;
-      background: #fff;
-      color: #1f2937;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.15s ease;
-    }
-    .cv-btn:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-
-    .cv-frame{
-      width: 100%;
-      height: 900px;
+    .resume-box{
       border: 1px solid var(--border);
       border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+      background: #fafafa;
     }
 
     @media (max-width: 980px){
@@ -184,19 +145,20 @@
       }
       .right{ padding-left: 0; padding-top: 2rem; }
       .profile-img{ max-width: 280px; margin: 0 auto; }
-      .cv-frame{ height: 700px; }
+      .tab{ font-size: 1.35rem; }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="site-title">The AE</div>
-    <nav class="tabs">
-      <a class="tab" href="index.html">Home</a>
-      <a class="tab" href="projects.html">Projects</a>
-      <a class="tab active" href="cv.html">CV</a>
-    </nav>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="tabs">
+        <a class="tab" href="index.html">Home</a>
+        <a class="tab" href="projects.html">Projects</a>
+        <a class="tab active" href="cv.html">Resume</a>
+      </nav>
+    </div>
   </header>
 
   <main class="page">
@@ -217,20 +179,26 @@
       </section>
 
       <section class="right">
-        <h1 class="section-title">Curriculum Vitae</h1>
-
-        <!-- Put your PDF here -->
-        <!-- Recommended path: assets/Arturo_Espana_CV.pdf -->
-        <div class="cv-actions">
-          <a class="cv-btn" href="assets/Arturo_Espana_CV.pdf">Open PDF</a>
-          <a class="cv-btn" href="assets/Arturo_Espana_CV.pdf" download>Download PDF</a>
+        <h1 class="section-title">Resume</h1>
+        <div class="resume-note">
+          Here’s my most recent resume (updated Dec 2025).
         </div>
 
-        <iframe
-          class="cv-frame"
-          src="assets/Arturo_Espana_CV.pdf"
-          title="Arturo Espana CV"
-        ></iframe>
+        <div class="resume-box">
+          <strong>Resume PDF placeholder</strong>
+          <p class="resume-note" style="margin-top:0.4rem;">
+            When you’re ready, add your PDF to:
+            <br><code>assets/Arturo_Espana_Resume_Dec_2025.pdf</code>
+            <br>and then link it here.
+          </p>
+
+          <!-- Uncomment after you add the PDF -->
+          <!--
+          <p>
+            <a href="assets/Arturo_Espana_Resume_Dec_2025.pdf">Open Resume PDF</a>
+          </p>
+          -->
+        </div>
       </section>
     </div>
   </main>

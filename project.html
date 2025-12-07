@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The AE | Projects</title>
+  <title>Arturo Espana | Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     :root{
-      --accent: #003660;
-      --accent-soft: rgba(0,54,96,0.08);
+      --header-bg: #8b1e3f;
+      --header-text: #ffffff;
+
       --text: #0f172a;
       --muted: #5b6777;
       --border: #e5e7eb;
@@ -16,7 +17,6 @@
 
       --max-width: 1100px;
       --radius: 10px;
-      --pill: 999px;
     }
 
     *{ box-sizing: border-box; }
@@ -28,60 +28,43 @@
       line-height: 1.55;
     }
 
-    .topbar{
+    /* HEADER TABS */
+    .site-header{ background: var(--header-bg); }
+    .header-inner{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.4rem 1.4rem 0.2rem;
-    }
-    .site-title{
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin: 0 0 0.8rem;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 2rem;
     }
     .tabs{
       display: flex;
-      gap: 0.6rem;
+      gap: 2.2rem;
       flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.9rem;
     }
     .tab{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.45rem 0.9rem;
-      border-radius: var(--pill);
-      border: 1px solid #cfd6df;
-      background: #fff;
-      color: #1f2937;
+      color: var(--header-text);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.15s ease;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      opacity: 0.95;
     }
-    .tab:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-    .tab.active{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
+    .tab:hover{ opacity: 1; text-decoration: underline; }
+    .tab.active{ opacity: 1; text-decoration: none; }
 
     .page{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.6rem 1.4rem 3.2rem;
+      padding: 2.4rem 1.4rem 3.2rem;
     }
 
     .layout{
       display: grid;
       grid-template-columns: 360px 1fr;
       gap: 0;
-      background: #fff;
     }
 
     .left{
@@ -120,7 +103,7 @@
       align-items: center;
       justify-content: center;
       padding: 0.42rem 0.75rem;
-      border-radius: var(--pill);
+      border-radius: 999px;
       border: 1px solid #cfd6df;
       background: #fff;
       color: #1f2937;
@@ -130,13 +113,12 @@
       transition: all 0.15s ease;
     }
     .pill-btn:hover{
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
+      border-color: #111827;
+      background: #f8fafc;
     }
 
     .section-title{
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 700;
       margin: 0 0 1rem;
     }
@@ -146,15 +128,11 @@
       border-top: 1px solid var(--border);
     }
     .project:first-of-type{ border-top: none; padding-top: 0; }
+
     .project-title{
       font-weight: 700;
-      font-size: 1.08rem;
+      font-size: 1.1rem;
       margin: 0 0 0.25rem;
-    }
-    .project-meta{
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 0.35rem;
     }
     .project-desc{
       color: var(--muted);
@@ -171,18 +149,20 @@
       }
       .right{ padding-left: 0; padding-top: 2rem; }
       .profile-img{ max-width: 280px; margin: 0 auto; }
+      .tab{ font-size: 1.35rem; }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="site-title">The AE</div>
-    <nav class="tabs">
-      <a class="tab" href="index.html">Home</a>
-      <a class="tab active" href="projects.html">Projects</a>
-      <a class="tab" href="cv.html">CV</a>
-    </nav>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="tabs">
+        <a class="tab" href="index.html">Home</a>
+        <a class="tab active" href="projects.html">Projects</a>
+        <a class="tab" href="cv.html">Resume</a>
+      </nav>
+    </div>
   </header>
 
   <main class="page">
@@ -199,38 +179,37 @@
           <a class="pill-btn" href="https://www.linkedin.com/in/arturo-espana/">LinkedIn</a>
           <a class="pill-btn" href="https://github.com/espanaarturo">GitHub</a>
           <a class="pill-btn" href="mailto:arturoespana@ucsb.edu">Email</a>
-          <a class="pill-btn" href="cv.html">CV</a>
         </div>
       </section>
 
       <section class="right">
         <h1 class="section-title">Projects</h1>
 
-        <!-- Replace/expand these with your real links later -->
-        <div class="project" id="healthcare">
-          <div class="project-title">Preventable Hospitalizations by Race</div>
-          <div class="project-meta">Random Forests · Negative Binomial · County Health Indicators</div>
+        <div class="project">
+          <div class="project-title">Project 1</div>
           <p class="project-desc">
-            Built an end-to-end modeling pipeline to study how healthcare access and socioeconomic factors
-            shape preventable hospital stays across U.S. counties, with a focus on racial disparities.
-          </p>
-        </div>
-
-        <div class="project" id="energy">
-          <div class="project-title">Ghana Petroleum Deregulation Analytics</div>
-          <div class="project-meta">R ETL · Time-series · Policy-facing QA</div>
-          <p class="project-desc">
-            Developed reproducible data pipelines and validation workflows for fuel price datasets,
-            supporting research on deregulation and market dynamics.
+            Short placeholder summary. Add your methods, data, and impact in 2–3 sentences.
           </p>
         </div>
 
         <div class="project">
-          <div class="project-title">Spatial Housing Market Modeling</div>
-          <div class="project-meta">sf · spdep · OLS/SAR/SAC-style workflows</div>
+          <div class="project-title">Project 2</div>
           <p class="project-desc">
-            Conducted spatial EDA and modeling of home values on California’s Central Coast,
-            including weights construction and spatial autocorrelation diagnostics.
+            Short placeholder summary. Add your methods, data, and impact in 2–3 sentences.
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-title">Project 3</div>
+          <p class="project-desc">
+            Short placeholder summary. Add your methods, data, and impact in 2–3 sentences.
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-title">Project 4</div>
+          <p class="project-desc">
+            Short placeholder summary. Add your methods, data, and impact in 2–3 sentences.
           </p>
         </div>
       </section>
