@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scalable, Adaptive Anomaly Detection for Housing Streams | Arturo Espana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case study: drift-aware anomaly detection for high-dimensional housing streams." />
+
+  <style>
+    :root{
+      --ucsb-blue: #003660;
+      --ucsb-gold: #FDB515;
+
+      --nav-bg: var(--ucsb-blue);
+      --nav-text: rgba(255,255,255,0.88);
+      --nav-active: #ffffff;
+
+      --accent: #003660;
+      --accent-soft: rgba(0,54,96,0.08);
+
+      --text: #0f172a;
+      --muted: #5b6777;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+
+      --max-width: 1100px;
+      --content-width: 900px;
+      --radius: 10px;
+      --pill: 999px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ margin: 0; padding: 0; }
+    body{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* ===== Header ===== */
+    .top-nav{
+      background: var(--nav-bg);
+      border-bottom: 3px solid var(--ucsb-gold);
+    }
+    .top-nav-inner{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+    .top-nav a{
+      color: var(--nav-text);
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding-bottom: 0.15rem;
+    }
+    .top-nav a:hover{ color: #ffffff; }
+    .top-nav a.active{
+      color: var(--nav-active);
+      border-bottom: 2px solid rgba(255,255,255,0.85);
+    }
+
+    /* ===== Page ===== */
+    .page{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.8rem 1.4rem 3.6rem;
+    }
+    .focus{
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .eyebrow{
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--ucsb-blue);
+      background: rgba(0,54,96,0.08);
+      border: 1px solid rgba(0,54,96,0.15);
+      padding: 0.12rem 0.55rem;
+      border-radius: var(--pill);
+      margin-bottom: 0.8rem;
+    }
+
+    h1{
+      font-size: 2.05rem;
+      line-height: 1.2;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .stack{
+      color: var(--muted);
+      font-weight: 600;
+      margin: 0 0 1.4rem;
+      font-size: 1rem;
+    }
+
+    h2{
+      font-size: 1.5rem;
+      margin: 2rem 0 0.8rem;
+      letter-spacing: -0.01em;
+    }
+
+    p{
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    ul{
+      margin: 0.3rem 0 1rem 1.1rem;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+    li{ margin: 0.25rem 0; }
+
+    .callout{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fafafa;
+      padding: 1rem 1.1rem;
+      margin-top: 0.6rem;
+    }
+
+    .link-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .link-pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--pill);
+      border: 1px solid #cfd6df;
+      background: #fff;
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 650;
+      transition: all 0.15s ease;
+    }
+    .link-pill:hover{
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* ===== Visuals ===== */
+    .visual-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .figure{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.9rem;
+      background: #fff;
+    }
+
+    .figure img{
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      background: #f3f4f6;
+      border: 1px solid #edf0f4;
+    }
+
+    .caption{
+      margin-top: 0.6rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <a href="index.html">Home</a>
+      <a class="active" href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="focus">
+      <span class="eyebrow">Case Study</span>
+      <h1>Scalable, Adaptive Anomaly Detection for Housing Streams</h1>
+      <div class="stack">
+        Tech Stack: R, Shiny, tidyverse, isotree, torch (optional), renv, testthat,
+        GitHub Actions, ggplot2, yaml
+      </div>
+
+      <h2>One-liner</h2>
+      <p>
+        I built a streaming, drift-aware anomaly detection platform for housing markets that adapts
+        thresholds and model weights in real time and explains anomalies in the original feature space.
+      </p>
+
+      <h2>Why this matters</h2>
+      <p>
+        Housing signals evolve with interest rates, inventory cycles, and local shocks. Static anomaly
+        thresholds often generate false positives during regime change. This project explores how adaptive
+        feature pipelines, drift detection, and multi-model ensembles can help surface meaningful anomalies
+        while preserving interpretability.
+      </p>
+
+      <h2>What I built</h2>
+      <ul>
+        <li>Streaming + windowing engine for simulated housing signals</li>
+        <li>High-dimensional feature expansion using rolling statistics and interactions</li>
+        <li>Rolling PCA with configurable refit schedule</li>
+        <li>Drift scenarios: abrupt rate hike, gradual seasonal shift, local micro-market changes</li>
+        <li>Detectors: robust median/MAD baseline with quantile thresholds</li>
+        <li>Isolation Forest (isotree) with drift-triggered refit</li>
+        <li>Optional torch autoencoder with adaptive reconstruction thresholds</li>
+        <li>Adaptive ensemble with EMA-based weight updates</li>
+        <li>Explainability layer that maps PCA contributors back to housing features</li>
+        <li>Shiny dashboard for live streaming control + explanation browsing</li>
+        <li>Repro + quality: renv lockfile, testthat suite, GitHub Actions CI smoke tests</li>
+      </ul>
+
+      <h2>Results</h2>
+      <div class="visual-grid">
+
+        <div class="figure">
+          <!-- Add your image here -->
+          <img src="assets/projects/housing-anomaly/precision_vs_dimensionality.png"
+               alt="Precision vs Dimensionality"
+               onerror="this.src=''; this.alt='Add: assets/projects/housing-anomaly/precision_vs_dimensionality.png'; this.style.border='1px dashed #d5dbe3'; this.style.height='180px';" />
+          <div class="caption">
+            “As dimensionality increases, the ensemble remains stable by shifting weight toward the detector
+            most suited to the current regime.”
+          </div>
+        </div>
+
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/ensemble_weights_over_time.png"
+               alt="Ensemble Weights Over Time"
+               onerror="this.src=''; this.alt='Add: assets/projects/housing-anomaly/ensemble_weights_over_time.png'; this.style.border='1px dashed #d5dbe3'; this.style.height='180px';" />
+          <div class="caption">
+            “After an abrupt rate-hike drift, adaptive thresholds reduce false positives compared with
+            static baselines.”
+          </div>
+        </div>
+
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/example_explanation.png"
+               alt="Example Explanation"
+               onerror="this.src=''; this.alt='Add: assets/projects/housing-anomaly/example_explanation.png'; this.style.border='1px dashed #d5dbe3'; this.style.height='180px';" />
+          <div class="caption">
+            Example explanation showing top contributing features mapped back from PCA space.
+          </div>
+        </div>
+
+      </div>
+
+      <h2>Demo</h2>
+      <p>
+        The Shiny demo allows toggling drift type/magnitude, anomaly rate, dimensionality, and detector
+        selection, while visualizing drift signals, detector scores, ensemble weights, and feature-level
+        explanations.
+      </p>
+      <div class="callout">
+        Add screenshots/GIF here:
+        <br><code>assets/projects/housing-anomaly/shiny_demo.gif</code>
+      </div>
+
+      <h2>What I learned</h2>
+      <ul>
+        <li>Designing modular ML interfaces is as important as model choice in streaming systems.</li>
+        <li>Adaptive ensembles help maintain stability when market regimes shift.</li>
+        <li>Explainability is much harder after dimensionality reduction — preserving PCA state and mapping back is crucial.</li>
+        <li>CI + tests materially improve confidence in iterative ML system development.</li>
+      </ul>
+
+      <h2>Future extensions</h2>
+      <ul>
+        <li>Add spatial neighborhood features using sf and adjacency graphs</li>
+        <li>Swap synthetic streams for real multi-city listing/rent feeds</li>
+        <li>Serve scoring via a lightweight API and stream backend</li>
+      </ul>
+
+      <h2>Links</h2>
+      <div class="link-row">
+        <!-- Replace these when ready -->
+        <a class="link-pill" href="#">GitHub Repo</a>
+        <a class="link-pill" href="#">Write-up</a>
+        <a class="link-pill" href="#">Demo screenshots / GIF</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

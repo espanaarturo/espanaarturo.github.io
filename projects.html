@@ -29,7 +29,8 @@
       --max-width: 1100px;
       --radius: 10px;
       --pill: 999px;
-      --content-width: 860px;
+      --content-width: 900px;
+      --shadow-soft: 0 10px 22px rgba(0,0,0,0.06);
     }
 
     *{ box-sizing: border-box; }
@@ -91,29 +92,24 @@
     .section-sub{
       color: var(--muted);
       font-size: 1.05rem;
-      margin: 0 0 1.6rem;
+      margin: 0 0 1.8rem;
     }
 
-    /* ===== Projects cards (single list only) ===== */
-    .project-grid{
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      text-align: left; /* keeps the cards readable */
-    }
-
-    .project-card{
+    /* ===== Single featured project card ===== */
+    .featured-card{
+      text-align: left;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1rem 1.05rem;
       background: #fff;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+      padding: 1.3rem 1.35rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .project-card:hover{
+    .featured-card:hover{
       border-color: rgba(0,54,96,0.25);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.06);
       transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.08);
     }
 
     .project-tag{
@@ -123,32 +119,76 @@
       color: var(--ucsb-blue);
       background: rgba(0,54,96,0.08);
       border: 1px solid rgba(0,54,96,0.15);
-      padding: 0.12rem 0.5rem;
+      padding: 0.12rem 0.55rem;
       border-radius: var(--pill);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.65rem;
     }
 
     .project-title{
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1.35rem;
+      font-weight: 750;
       margin: 0 0 0.35rem;
+      letter-spacing: -0.01em;
     }
 
-    .project-blurb{
+    .stack-line{
+      font-size: 0.95rem;
       color: var(--muted);
-      margin: 0;
+      margin: 0 0 0.9rem;
+      font-weight: 560;
+    }
+
+    .project-desc{
+      color: var(--muted);
+      margin: 0 0 1rem;
+      font-size: 1.02rem;
+    }
+
+    .subhead{
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin: 1.1rem 0 0.5rem;
+    }
+
+    .highlights{
+      margin: 0 0 0.9rem 1.1rem;
+      padding: 0;
+      color: var(--muted);
       font-size: 0.98rem;
     }
+    .highlights li{ margin: 0.25rem 0; }
 
-    .project-card a{
+    .links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.6rem;
+    }
+
+    .link-pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.42rem 0.75rem;
+      border-radius: var(--pill);
+      border: 1px solid #cfd6df;
+      background: #fff;
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 650;
+      transition: all 0.15s ease;
+    }
+    .link-pill:hover{
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .card-click{
       text-decoration: none;
       color: inherit;
       display: block;
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 900px){
-      .project-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -166,52 +206,45 @@
     <section class="focus">
       <h2 class="section-title">Projects</h2>
       <p class="section-sub">
-        A curated set of my research and personal data science projects.
+        A curated set of my research, course, and personal data science projects.
       </p>
 
-      <div class="project-grid">
-        <!-- Replace # with repo links later -->
+      <!-- SINGLE PROJECT ONLY -->
+      <a class="card-click" href="housing-anomaly.html">
+        <article class="featured-card">
+          <span class="project-tag">Featured</span>
 
-        <div class="project-card">
-          <a href="#">
-            <span class="project-tag">Health Equity</span>
-            <div class="project-title">Project 1 — Title Coming Soon</div>
-            <p class="project-blurb">
-              Placeholder summary for a county-level health modeling project.
-            </p>
-          </a>
-        </div>
+          <h3 class="project-title">Scalable, Adaptive Anomaly Detection for Housing Streams</h3>
 
-        <div class="project-card">
-          <a href="#">
-            <span class="project-tag">Energy</span>
-            <div class="project-title">Project 2 — Title Coming Soon</div>
-            <p class="project-blurb">
-              Placeholder summary for Ghana fuel pricing + ETL + time-series analytics.
-            </p>
-          </a>
-        </div>
+          <p class="stack-line">
+            R | Shiny | isotree | torch (optional) | renv | testthat
+          </p>
 
-        <div class="project-card">
-          <a href="#">
-            <span class="project-tag">Policy / Methods</span>
-            <div class="project-title">Project 3 — Title Coming Soon</div>
-            <p class="project-blurb">
-              Placeholder summary for reproducible statistical or ML methods work.
-            </p>
-          </a>
-        </div>
+          <p class="project-desc">
+            A drift-aware anomaly detection system for high-dimensional housing/real-estate streams.
+            Simulates evolving market regimes (rate shocks, seasonality, local micro-market shifts),
+            expands features, applies rolling PCA, and detects anomalies using a robust multi-model
+            ensemble with interpretable explanations mapped back to housing features.
+          </p>
 
-        <div class="project-card">
-          <a href="#">
-            <span class="project-tag">Course / Applied</span>
-            <div class="project-title">Project 4 — Title Coming Soon</div>
-            <p class="project-blurb">
-              Placeholder summary for a polished course project you want to showcase.
-            </p>
-          </a>
-        </div>
-      </div>
+          <div class="subhead">Highlights</div>
+          <ul class="highlights">
+            <li>Adaptive ensemble (MAD baseline + Isolation Forest + optional Autoencoder)</li>
+            <li>Concept drift injection + detection</li>
+            <li>High-dimensional scaling (100 → 10,000 features)</li>
+            <li>Explainability with PCA back-mapping</li>
+            <li>Shiny live demo + CI + tests</li>
+          </ul>
+
+          <div class="subhead">Links</div>
+          <div class="links">
+            <!-- Replace these when ready -->
+            <a class="link-pill" href="#" title="Add your GitHub repo URL">GitHub Repo</a>
+            <a class="link-pill" href="#" title="Add screenshots or GIF link">Demo screenshots / GIF</a>
+            <a class="link-pill" href="#" title="Add write-up link">Write-up</a>
+          </div>
+        </article>
+      </a>
     </section>
   </main>
 </body>
