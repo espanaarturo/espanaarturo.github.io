@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Scalable, Adaptive Anomaly Detection for Housing Streams | Arturo Espana</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Case study: drift-aware anomaly detection for high-dimensional housing streams." />
+  <meta name="description" content="Case study: drift-aware, scalable anomaly detection for high-dimensional housing streams." />
 
   <style>
     :root{
@@ -24,9 +24,10 @@
       --bg: #ffffff;
 
       --max-width: 1100px;
-      --content-width: 900px;
+      --content-width: 920px;
       --radius: 10px;
       --pill: 999px;
+      --shadow-soft: 0 10px 22px rgba(0,0,0,0.06);
     }
 
     *{ box-sizing: border-box; }
@@ -69,7 +70,7 @@
     .page{
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 2.8rem 1.4rem 3.6rem;
+      padding: 2.8rem 1.4rem 3.8rem;
     }
     .focus{
       max-width: var(--content-width);
@@ -89,22 +90,32 @@
     }
 
     h1{
-      font-size: 2.05rem;
+      font-size: 2.15rem;
       line-height: 1.2;
       margin: 0 0 0.5rem;
       letter-spacing: -0.02em;
     }
 
-    .stack{
+    .subtitle{
       color: var(--muted);
+      font-size: 1.04rem;
+      margin: 0 0 1.25rem;
       font-weight: 600;
-      margin: 0 0 1.4rem;
-      font-size: 1rem;
     }
 
+    .stack{
+      border: 1px solid var(--border);
+      background: #fafafa;
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      margin: 0 0 1.6rem;
+    }
+    .stack strong{ font-weight: 800; }
+    .stack span{ color: var(--muted); }
+
     h2{
-      font-size: 1.5rem;
-      margin: 2rem 0 0.8rem;
+      font-size: 1.55rem;
+      margin: 2.1rem 0 0.8rem;
       letter-spacing: -0.01em;
     }
 
@@ -115,7 +126,7 @@
     }
 
     ul{
-      margin: 0.3rem 0 1rem 1.1rem;
+      margin: 0.3rem 0 1.1rem 1.1rem;
       color: var(--muted);
       font-size: 1.02rem;
     }
@@ -156,8 +167,15 @@
       color: var(--accent);
     }
 
-    /* ===== Visuals ===== */
-    .visual-grid{
+    /* ===== Visual grids ===== */
+    .grid-2{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .grid-1{
       display: grid;
       grid-template-columns: 1fr;
       gap: 1rem;
@@ -169,6 +187,7 @@
       border-radius: var(--radius);
       padding: 0.9rem;
       background: #fff;
+      box-shadow: var(--shadow-soft);
     }
 
     .figure img{
@@ -185,6 +204,29 @@
       color: var(--muted);
       font-size: 0.95rem;
     }
+
+    .small-note{
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    code, pre{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.95em;
+    }
+
+    pre{
+      background: #0b1020;
+      color: #e5e7eb;
+      padding: 0.9rem 1rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 0.6rem 0 1.1rem;
+    }
+
+    @media (max-width: 900px){
+      .grid-2{ grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 
@@ -199,110 +241,242 @@
 
   <main class="page">
     <div class="focus">
+
       <span class="eyebrow">Case Study</span>
       <h1>Scalable, Adaptive Anomaly Detection for Housing Streams</h1>
-      <div class="stack">
-        Tech Stack: R, Shiny, tidyverse, isotree, torch (optional), renv, testthat,
-        GitHub Actions, ggplot2, yaml
+      <div class="subtitle">
+        A drift-aware anomaly detection platform for high-dimensional housing/real-estate streams
+        with rolling PCA, adaptive ensemble weighting, and interpretable explanations.
       </div>
 
-      <h2>One-liner</h2>
-      <p>
-        I built a streaming, drift-aware anomaly detection platform for housing markets that adapts
-        thresholds and model weights in real time and explains anomalies in the original feature space.
-      </p>
+      <div class="stack">
+        <p style="margin:0 0 0.35rem;">
+          <strong>Tech Stack:</strong>
+          <span>R, Shiny, tidyverse, isotree, torch (optional), renv, testthat, GitHub Actions, ggplot2, yaml</span>
+        </p>
+        <p style="margin:0;">
+          <strong>Replication:</strong>
+          <span>Full code is available in the GitHub repo.</span>
+        </p>
+      </div>
 
-      <h2>Why this matters</h2>
+      <div class="link-row">
+        <!-- Replace # with your real repo + write-up -->
+        <a class="link-pill" href="#">GitHub Repo (Full Code)</a>
+        <a class="link-pill" href="#results">Results</a>
+        <a class="link-pill" href="#demo">Shiny Demo</a>
+        <a class="link-pill" href="#run">How to Run</a>
+      </div>
+
+      <h2>Overview</h2>
       <p>
-        Housing signals evolve with interest rates, inventory cycles, and local shocks. Static anomaly
-        thresholds often generate false positives during regime change. This project explores how adaptive
-        feature pipelines, drift detection, and multi-model ensembles can help surface meaningful anomalies
-        while preserving interpretability.
+        Housing markets are not static. They shift with interest rate shocks, seasonal demand, inventory constraints,
+        and local micro-market events. Traditional anomaly detectors often assume stable distributions and break down
+        when the data regime changes.
+      </p>
+      <p>
+        This project is a drift-aware, high-dimensional anomaly detection system designed for streaming housing/real-estate
+        signals. It simulates evolving market regimes, expands structured features into large synthetic feature spaces
+        (100 → 10,000), compresses them via rolling PCA, and detects anomalies using a robust, adaptive ensemble.
+      </p>
+      <p>
+        A companion Shiny app provides live-stream monitoring, drift diagnostics, ensemble weight tracking, an experiment
+        viewer, and window-level explanations.
       </p>
 
       <h2>What I built</h2>
       <ul>
-        <li>Streaming + windowing engine for simulated housing signals</li>
-        <li>High-dimensional feature expansion using rolling statistics and interactions</li>
-        <li>Rolling PCA with configurable refit schedule</li>
-        <li>Drift scenarios: abrupt rate hike, gradual seasonal shift, local micro-market changes</li>
-        <li>Detectors: robust median/MAD baseline with quantile thresholds</li>
-        <li>Isolation Forest (isotree) with drift-triggered refit</li>
+        <li>Streaming simulation with injected concept drift across multiple regimes</li>
+        <li>High-dimensional feature expansion (interactions, rolling stats, noise)</li>
+        <li>Rolling PCA to maintain tractability in large feature spaces</li>
+        <li>MAD baseline (robust statistical detector)</li>
+        <li>Isolation Forest (isotree) with drift-aware refit logic</li>
         <li>Optional torch autoencoder with adaptive reconstruction thresholds</li>
-        <li>Adaptive ensemble with EMA-based weight updates</li>
-        <li>Explainability layer that maps PCA contributors back to housing features</li>
-        <li>Shiny dashboard for live streaming control + explanation browsing</li>
+        <li>Adaptive ensemble weighting that re-allocates trust as regimes change</li>
+        <li>Explainability via PCA back-mapping to interpretable housing features</li>
+        <li>Shiny UI: Live Stream, Explanations, Experiment Viewer</li>
         <li>Repro + quality: renv lockfile, testthat suite, GitHub Actions CI smoke tests</li>
       </ul>
 
-      <h2>Results</h2>
-      <div class="visual-grid">
+      <h2>Why this matters</h2>
+      <p>
+        In production, a detector doesn’t get to “retrain from scratch” every time the market changes.
+        A system must detect drift, stay stable, and adapt its decision logic without losing interpretability.
+      </p>
+      <ul>
+        <li>Robustness under regime change</li>
+        <li>Scalability to high-dimensional signals</li>
+        <li>Human-readable anomaly explanations</li>
+        <li>Streaming ML system design</li>
+      </ul>
+
+      <h2>System design (high level)</h2>
+      <ul>
+        <li>Generate synthetic housing streams across multiple regional “markets”</li>
+        <li>Inject drift via regime types (rate hikes, seasonal shifts, local shocks)</li>
+        <li>Create overlapping sliding windows for evaluation</li>
+        <li>Expand features to stress-test scaling (100 → 10,000)</li>
+        <li>Apply rolling PCA with configurable refit schedule</li>
+        <li>Score each window with multiple detectors</li>
+        <li>Update ensemble weights to maintain stability under drift</li>
+      </ul>
+
+      <div class="callout">
+        <div class="small-note">
+          <strong>Window interpretation:</strong><br/>
+          A window is one evaluation block of the stream. In sliding mode, each new window overlaps with the last.
+          Early windows typically show calibration and stabilization; later windows reflect drift emergence and
+          ensemble adaptation.
+        </div>
+      </div>
+
+      <h2 id="results">Results highlights</h2>
+      <div class="grid-2">
 
         <div class="figure">
-          <!-- Add your image here -->
-          <img src="assets/projects/housing-anomaly/precision_vs_dimensionality.png"
-               alt="Precision vs Dimensionality"
-               onerror="this.src=''; this.alt='Add: assets/projects/housing-anomaly/precision_vs_dimensionality.png'; this.style.border='1px dashed #d5dbe3'; this.style.height='180px';" />
+          <img src="assets/projects/housing-anomaly/ensemble_weights.png"
+               alt="Adaptive ensemble weights across windows" />
           <div class="caption">
-            “As dimensionality increases, the ensemble remains stable by shifting weight toward the detector
-            most suited to the current regime.”
+            Adaptive ensemble weights across windows. As the stream transitions into a new regime,
+            the system re-allocates trust toward detectors showing stronger stability and separation.
           </div>
         </div>
 
         <div class="figure">
-          <img src="assets/projects/housing-anomaly/ensemble_weights_over_time.png"
-               alt="Ensemble Weights Over Time"
-               onerror="this.src=''; this.alt='Add: assets/projects/housing-anomaly/ensemble_weights_over_time.png'; this.style.border='1px dashed #d5dbe3'; this.style.height='180px';" />
+          <img src="assets/projects/housing-anomaly/precision_vs_dim.png"
+               alt="Precision vs dimensionality" />
           <div class="caption">
-            “After an abrupt rate-hike drift, adaptive thresholds reduce false positives compared with
-            static baselines.”
+            Precision of the adaptive ensemble across drift regimes as target dimensionality increases.
+            Regime structure appears to influence precision more than raw dimension alone within this tested range.
           </div>
         </div>
 
         <div class="figure">
-          <img src="assets/projects/housing-anomaly/example_explanation.png"
-               alt="Example Explanation"
-               onerror="this.src=''; this.alt='Add: assets/projects/housing-anomaly/example_explanation.png'; this.style.border='1px dashed #d5dbe3'; this.style.height='180px';" />
+          <img src="assets/projects/housing-anomaly/time_to_detection.png"
+               alt="Time-to-detection proxy" />
           <div class="caption">
-            Example explanation showing top contributing features mapped back from PCA space.
+            Time-to-detection proxy showing a later first-anomaly window post-drift,
+            supporting the idea that regimes can reset the baseline before anomalies re-separate.
+          </div>
+        </div>
+
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/explanation_features.png"
+               alt="Explanation feature frequency" />
+          <div class="caption">
+            Most frequent top-k explanation features across detected anomalies.
+            Price and rent dominate, supported by unemployment, days on market, and rate proxies.
           </div>
         </div>
 
       </div>
 
-      <h2>Demo</h2>
+      <h2>Experiment Viewer summary</h2>
+      <div class="grid-1">
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/preset_sweep_summary.png"
+               alt="Preset sweep summary across drift regimes and dimensions" />
+          <div class="caption">
+            Preset experiment sweep comparing drift regimes across target dimensions.
+            This supports that the system is benchmarked beyond the live demo.
+          </div>
+        </div>
+      </div>
+
+      <h2 id="demo">Shiny demo narrative</h2>
       <p>
-        The Shiny demo allows toggling drift type/magnitude, anomaly rate, dimensionality, and detector
-        selection, while visualizing drift signals, detector scores, ensemble weights, and feature-level
-        explanations.
+        These screenshots capture the intended story arc: baseline calibration → drift emergence →
+        ensemble re-allocation → stabilized post-drift behavior.
       </p>
-      <div class="callout">
-        Add screenshots/GIF here:
-        <br><code>assets/projects/housing-anomaly/shiny_demo.gif</code>
+
+      <div class="grid-2">
+
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/Run initialized (Window 1).png"
+               alt="Run initialized - Window 1" />
+          <div class="caption">
+            Window 1 after reset. The system establishes baseline behavior; drift metrics and weights are initial.
+          </div>
+        </div>
+
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/Early windows before drift signal emerges (Window 3)..png"
+               alt="Early windows - Window 3" />
+          <div class="caption">
+            Window 3. Early variability is expected as the system separates noise from regime-level changes.
+          </div>
+        </div>
+
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/Transition period (Window 6)..png"
+               alt="Transition period - Window 6" />
+          <div class="caption">
+            Window 6. Drift metrics become more structured and the ensemble begins shifting trust.
+          </div>
+        </div>
+
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/Drift regime active and ensemble adapting (Window 10)..png"
+               alt="Drift regime active - Window 10" />
+          <div class="caption">
+            Window 10. Drift signals become consistent and the adaptive ensemble recalibrates under the new regime.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="grid-1">
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/window_12_weights.png"
+               alt="Model weights re-allocating under regime change - Window 12" />
+          <div class="caption">
+            Window 12. The ensemble’s trust distribution stabilizes after sufficient post-drift evidence accumulates.
+          </div>
+        </div>
+      </div>
+
+      <h2>Window-level interpretability</h2>
+      <div class="grid-1">
+        <div class="figure">
+          <img src="assets/projects/housing-anomaly/window_16_interpretability.png"
+               alt="Window-level interpretability view - Window 16" />
+          <div class="caption">
+            Window-level interpretability view. Detector-specific signals and top PCA contributors are surfaced,
+            enabling a structured narrative of why a window was flagged.
+          </div>
+        </div>
       </div>
 
       <h2>What I learned</h2>
       <ul>
         <li>Designing modular ML interfaces is as important as model choice in streaming systems.</li>
         <li>Adaptive ensembles help maintain stability when market regimes shift.</li>
-        <li>Explainability is much harder after dimensionality reduction — preserving PCA state and mapping back is crucial.</li>
+        <li>Explainability after dimensionality reduction requires preserving PCA state and careful back-mapping.</li>
         <li>CI + tests materially improve confidence in iterative ML system development.</li>
       </ul>
 
-      <h2>Future extensions</h2>
-      <ul>
-        <li>Add spatial neighborhood features using sf and adjacency graphs</li>
-        <li>Swap synthetic streams for real multi-city listing/rent feeds</li>
-        <li>Serve scoring via a lightweight API and stream backend</li>
-      </ul>
+      <h2 id="run">How to run</h2>
+      <p class="small-note">From project root:</p>
+      <pre><code>renv::restore()
+shiny::runApp("apps", launch.browser = TRUE)</code></pre>
 
-      <h2>Links</h2>
+      <p class="small-note">For batch experiments:</p>
+      <pre><code>source("scripts/run_stream.R")
+run_stream("configs/demo.yaml")</code></pre>
+
+      <h2>Full replication & code access</h2>
+      <p>
+        The GitHub repo contains the complete streaming engine, configuration templates, experiment harness,
+        tests, and CI workflow. This case study provides the system narrative and outputs; the repository
+        provides full implementation details and reproducible runs.
+      </p>
+
       <div class="link-row">
-        <!-- Replace these when ready -->
-        <a class="link-pill" href="#">GitHub Repo</a>
-        <a class="link-pill" href="#">Write-up</a>
-        <a class="link-pill" href="#">Demo screenshots / GIF</a>
+        <!-- Replace with your real URL -->
+        <a class="link-pill" href="#">GitHub Repo (Full Code)</a>
+        <a class="link-pill" href="projects.html">Back to Projects</a>
       </div>
+
     </div>
   </main>
 </body>
